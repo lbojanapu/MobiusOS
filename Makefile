@@ -17,7 +17,11 @@ KERNEL = mobius.elf
 OBJS = \
     boot.o \
     kernel.o \
-    uart.o
+    uart.o \
+    cpu.o
+
+cpu.o: kernel/arch/arm64/cpu.S
+	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: all clean run
 
